@@ -1,3 +1,6 @@
+# Server settings
+server:
+  port: 8080
 # Font settings
 font:
   # Inculde fonts

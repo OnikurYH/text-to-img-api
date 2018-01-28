@@ -1,0 +1,17 @@
+# Server settings
+server:
+  port: 8080
+# Font settings
+font:
+  # Inculde fonts
+  include:
+    # Font name: is enable
+    Helvetica: true
+    Courier: true
+  # Default values
+  defaults:
+    font: "Arial"
+    fontSize: 12
+    minFontSize: 12
+    maxFontSize: 100
+    fontColor: "#000000"

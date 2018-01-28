@@ -1,7 +1,11 @@
+# Font settings
 font:
+  # Inculde fonts
   include:
+    # Font name: is enable
     Helvetica: true
     Courier: true
+  # Default values
   defaults:
     font: "Arial"
     fontSize: 12

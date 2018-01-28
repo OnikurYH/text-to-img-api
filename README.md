@@ -4,7 +4,7 @@ WebAPI convert text to image with customization
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Pre-request
+## Pre-requirement
 
 - ImageMagick 7.0 or latest (<https://www.imagemagick.org>)
 - Go 1.9.3 (<https://golang.org/>)
@@ -25,6 +25,10 @@ WebAPI convert text to image with customization
     ```bash
     go run main.go
     ```
+
+## How to install new fonts?
+
+You can install the font to system, restart this application can the font will be load
 
 ## Config
 

@@ -2,6 +2,24 @@
 
 
 [[projects]]
+  branch = "master"
+  name = "github.com/golang/freetype"
+  packages = [
+    "raster",
+    "truetype"
+  ]
+  revision = "e2365dfdc4a05e4b8299a783240d4a7d5a65d4e4"
+
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/image"
+  packages = [
+    "font",
+    "math/fixed"
+  ]
+  revision = "12117c17ca67ffa1ce22e9409f3b0b0a93ac08c7"
+
+[[projects]]
   name = "gopkg.in/gographics/imagick.v3"
   packages = [
     "imagick",
@@ -10,9 +28,15 @@
   revision = "e5c95c340c8d9bf140ca670563906805b655d9d9"
   version = "v3.2.0"
 
+[[projects]]
+  branch = "v2"
+  name = "gopkg.in/yaml.v2"
+  packages = ["."]
+  revision = "d670f9405373e636a5a2765eea47fac0c9bc91a4"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "203bfc7b490e7882088df7eb943c043bdb611750fd6188b2a0d7cdad13f0cf03"
+  inputs-digest = "d82872e305cc3dff8378b729ca2ddbb863ed0023ae6b6733146443ee734abc82"
   solver-name = "gps-cdcl"
   solver-version = 1

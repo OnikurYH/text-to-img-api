@@ -1,0 +1,10 @@
+font:
+  include:
+    Helvetica: true
+    Courier: true
+  defaults:
+    font: "Arial"
+    fontSize: 12
+    minFontSize: 12
+    maxFontSize: 100
+    fontColor: "#000000"

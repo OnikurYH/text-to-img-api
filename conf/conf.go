@@ -9,6 +9,9 @@ import (
 
 // Config ...
 type Config struct {
+	Server struct {
+		Port int
+	}
 	Font struct {
 		Include  map[string]bool
 		Defaults struct {

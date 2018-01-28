@@ -46,7 +46,7 @@ func (ctrl *Controller) index(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	text := strings.TrimSuffix(strings.TrimPrefix(req.URL.Path, "/-/"), extansion)
+	text := strings.TrimSuffix(strings.TrimPrefix(strings.TrimPrefix(req.URL.Path, "/-/"), "/api/text/"), extansion)
 
 	// Options
 	qs := req.URL.Query()

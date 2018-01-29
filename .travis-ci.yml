@@ -1,0 +1,14 @@
+language: go
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y libmagickwand-dev
+install:
+  - export GOPATH="${TRAVIS_BUILD_DIR}/Godeps/_workspace:$GOPATH"
+  - export PATH="${TRAVIS_BUILD_DIR}/Godeps/_workspace/bin:$PATH"
+  - go get -u github.com/golang/dep/cmd/dep
+  - dep ensure
+before_script: go vet ./...
+script: go test -v ./test/...
+go:
+  - 1.9.3
+go_import_path: onikur.com/text-to-img-api

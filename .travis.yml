@@ -1,7 +1,15 @@
 language: go
 before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -y imagemagick libmagickwand-dev
+  # - sudo apt-get -qq update
+  # - sudo apt-get install -y imagemagick libmagickwand-dev
+  - wget ftp://mirror.checkdomain.de/imagemagick/ImageMagick-7.0.7-22.tar.gz
+  - tar xvzf ImageMagick-7.0.7-22.tar.gz
+  - cd ImageMagick-7.0.7-22
+  - ./configure
+  - make -j4
+  - sudo make install
+  - sudo ldconfig /usr/local/lib
+  - cd ..
 install:
   - export GOPATH="${TRAVIS_BUILD_DIR}/Godeps/_workspace:$GOPATH"
   - export PATH="${TRAVIS_BUILD_DIR}/Godeps/_workspace/bin:$PATH"

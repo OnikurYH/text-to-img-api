@@ -6,7 +6,6 @@ import (
 	"strconv"
 
 	"onikur.com/text-to-img-api/api"
-
 	"onikur.com/text-to-img-api/utils"
 
 	"onikur.com/text-to-img-api/conf"

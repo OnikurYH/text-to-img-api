@@ -1,20 +1,35 @@
 language: go
+
+cache:
+  directories:
+  - "$HOME/opt"
+
+env:
+  global:
+  - IMAGEMAGICK_VERSION: '7.0.7-22'
+
 before_install:
-  # - sudo apt-get -qq update
-  # - sudo apt-get install -y imagemagick libmagickwand-dev
-  - wget ftp://mirror.checkdomain.de/imagemagick/ImageMagick-7.0.7-22.tar.gz
-  - tar xvzf ImageMagick-7.0.7-22.tar.gz
-  - cd ImageMagick-7.0.7-22
-  - ./configure
-  - make -j4
-  - sudo make install
-  - sudo ldconfig /usr/local/lib
-  - cd ..
+  - convert -version | grep $IMAGEMAGICK_VERSION || {
+    export CPU_CORES=$(nproc) &&
+    cd /tmp &&
+    wget https://www.imagemagick.org/download/ImageMagick-$IMAGEMAGICK_VERSION.tar.gz &&
+    tar xvzf ImageMagick-$IMAGEMAGICK_VERSION.tar.gz &&
+    cd ImageMagick-$IMAGEMAGICK_VERSION &&
+    ./configure --prefix=$HOME/opt &&
+    make -j$CPU_CORES &&
+    make install -j$CPU_CORES &&
+    $HOME/opt/bin/magick -version | grep $IMAGEMAGICK_VERSION &&
+    cd $TRAVIS_BUILD_DIR; }
+  - export LD_FLAGS=-L$HOME/opt/lib
+  - export LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib:$HOME/opt/lib
+  - export CPATH=$CPATH:$HOME/opt/include
+
 install:
   - export GOPATH="${TRAVIS_BUILD_DIR}/Godeps/_workspace:$GOPATH"
   - export PATH="${TRAVIS_BUILD_DIR}/Godeps/_workspace/bin:$PATH"
   - go get -u github.com/golang/dep/cmd/dep
   - dep ensure
+
 before_script: go vet ./...
 script: go test -v ./test/...
 go:

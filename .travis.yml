@@ -9,6 +9,8 @@ env:
   - IMAGEMAGICK_VERSION: '7.0.7-22'
 
 before_install:
+  - sudo apt-get update
+  - sudo apt-get install pkg-config
   - convert -version | grep $IMAGEMAGICK_VERSION || {
     export CPU_CORES=$(nproc) &&
     cd /tmp &&
@@ -24,6 +26,8 @@ before_install:
   - export LD_FLAGS=-L$HOME/opt/lib
   - export LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib:$HOME/opt/lib
   - export CPATH=$CPATH:$HOME/opt/include
+  - export PKG_CONFIG_PATH=$HOME/opt/lib/pkgconfig
+  - pkg-config --cflags --libs MagickWand
 
 install:
   - export GOPATH="${TRAVIS_BUILD_DIR}/Godeps/_workspace:$GOPATH"

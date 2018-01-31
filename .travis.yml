@@ -20,7 +20,7 @@ before_install:
     make install -j$CPU_CORES &&
     $HOME/opt/bin/magick -version | grep $IMAGEMAGICK_VERSION &&
     cd $TRAVIS_BUILD_DIR; }
-  - ldconfig $HOME/opt/lib
+  - sudo ldconfig $HOME/opt/lib
   - export LD_FLAGS=-L$HOME/opt/lib
   - export LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib:$HOME/opt/lib
   - export CPATH=$CPATH:$HOME/opt/include

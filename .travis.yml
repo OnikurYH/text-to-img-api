@@ -11,6 +11,7 @@ env:
 before_install:
   - sudo apt-get update
   - sudo apt-get install pkg-config
+  - export PATH=$PATH:$HOME/opt/bin
   - convert -version | grep $IMAGEMAGICK_VERSION || {
     export CPU_CORES=$(nproc) &&
     cd /tmp &&
